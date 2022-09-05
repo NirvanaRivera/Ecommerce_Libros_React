@@ -7,7 +7,7 @@ function App() {
   return (
     <ChakraProvider>
       <Navbar />
-      <ItemListContainer nombre="Usuario"/>
+      <ItemListContainer greeting="Usuario"/>
     </ChakraProvider>
   );
 }
