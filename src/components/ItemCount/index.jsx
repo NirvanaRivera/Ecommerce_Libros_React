@@ -3,7 +3,7 @@ import { HStack, Button, Text, Stack, Box, Heading, Center } from '@chakra-ui/re
 
 const ItemCount = ({ initial, stock, onAdd }) => {
  
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(initial)
 
     const increase = () => count < stock && setCount(count + 1);
     const decrease = () => count > initial && setCount(count - 1);

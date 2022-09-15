@@ -20,7 +20,7 @@ const Navbar = () => {
                 <Link px={linkPadding} >Ficción</Link>
                 <Link px={linkPadding}>No Ficción</Link>
                 <Link px={linkPadding}>Románticos</Link>
-                <Link px={linkPadding}>Ofertas</Link>
+                <Link px={linkPadding}>Infantiles y Juveniles</Link>
                 <Link px={linkPadding}><CartWidget/></Link> 
             </HStack>
         </HStack>
