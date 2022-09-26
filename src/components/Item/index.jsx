@@ -1,4 +1,5 @@
-import { VStack, Button, Text, Image, Link } from "@chakra-ui/react";
+import { VStack, Button, Text, Image } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
 const Item = ({product}) => {
     return (
@@ -6,8 +7,8 @@ const Item = ({product}) => {
             <Image src={product.image} alt={product.product} w='250px'/>
             <Text>{product.product}</Text>
             <Text>${product.price}</Text>
-            <Button colorScheme={'orange'} size='xs'>
-                <Link>Ver Detalles</Link>
+            <Button colorScheme='orange' size='xs'>
+                <NavLink to={`/product/${product.id}`}>Ver Detalles</NavLink>
             </Button>
         </VStack>
     );

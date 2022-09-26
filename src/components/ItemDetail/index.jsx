@@ -1,4 +1,5 @@
-import { Stack, Text, Image, Button, Link, Box} from "@chakra-ui/react";
+import { Stack, Text, Image, Box} from "@chakra-ui/react";
+import ItemCount from "../ItemCount";
 
 const ItemDetail = ({listProduct}) => {
 
@@ -10,9 +11,7 @@ const ItemDetail = ({listProduct}) => {
                     <Text pt='8' pb='8'>{listProduct.description}</Text>
                     <Text fontSize='lg' as='u'>Categoría: {listProduct.category}</Text>
                     <Box pt='8'>
-                        <Button colorScheme={'orange'}>
-                            <Link>Comprar</Link>
-                        </Button>
+                        <ItemCount initial={1} stock={listProduct.stock}/>
                     </Box> 
                 </Stack>
                 

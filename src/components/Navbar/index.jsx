@@ -1,6 +1,7 @@
-import { HStack, Spacer, Link, Heading } from "@chakra-ui/react";
+import { HStack, Spacer, Heading, Text, Box } from "@chakra-ui/react";
 import logoLibro from '../../assets/logo.png';
 import CartWidget from "../CartWidget";
+import { NavLink, Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -9,19 +10,33 @@ const Navbar = () => {
         marginLeft: "13px"
     };
 
-    const linkPadding = "15";
+    const linkPadding = "8px";
 
     return (
         <HStack bg="#F1B37B">
-            <img src={logoLibro} alt="" style={logoStyle} />
-            <Heading>Radagast Libros</Heading>
+            <Link to='/'>
+                <HStack>
+                    <img src={logoLibro} alt="" style={logoStyle} />
+                    <Heading >Radagast Libros</Heading>
+                </HStack>
+            </Link>
             <Spacer />
             <HStack fontSize="18px">
-                <Link px={linkPadding} >Ficción</Link>
-                <Link px={linkPadding}>No Ficción</Link>
-                <Link px={linkPadding}>Románticos</Link>
-                <Link px={linkPadding}>Infantiles y Juveniles</Link>
-                <Link px={linkPadding}><CartWidget/></Link> 
+                <NavLink to='/category/ficcion'>
+                    <Text px={linkPadding}>Ficción</Text>
+                </NavLink>
+                <NavLink to='/category/no-ficcion'> 
+                    <Text px={linkPadding}>No Ficción</Text>
+                </NavLink>
+                <NavLink to='/category/romanticos'>
+                    <Text px={linkPadding}>Románticos</Text>
+                </NavLink>
+                <NavLink to='/category/infantiles-y-juveniles'> 
+                    <Text px={linkPadding}>Infantiles y Juveniles</Text>
+                </NavLink>
+                <Box px={linkPadding}>
+                    <Link><CartWidget/></Link> 
+                </Box>
             </HStack>
         </HStack>
     );
