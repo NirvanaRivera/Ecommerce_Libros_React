@@ -1,7 +1,15 @@
-import { Stack, Text, Image, Box} from "@chakra-ui/react";
+import { Stack, Text, Image, Box, Button} from "@chakra-ui/react";
+import { useState } from "react";
 import ItemCount from "../ItemCount";
+import { NavLink } from "react-router-dom";
 
 const ItemDetail = ({listProduct}) => {
+
+    const [isAdded, setIsAdded] = useState(false)
+
+    const onAdd = () => {
+        setIsAdded(true)
+    }
 
     return (
         <Stack direction='row' boxShadow={'lg'} p='6' rounded='md' bg='#F1B37B' m='15px' minWidth='300px'>
@@ -11,7 +19,16 @@ const ItemDetail = ({listProduct}) => {
                     <Text pt='8' pb='8'>{listProduct.description}</Text>
                     <Text fontSize='lg' as='u'>Categoría: {listProduct.category}</Text>
                     <Box pt='8'>
-                        <ItemCount initial={1} stock={listProduct.stock}/>
+                        {
+                            isAdded ?
+                            <NavLink to="/cart">
+                                <Button olorScheme='orange' size='sm'> Ir al Carrito </Button>
+                            </NavLink>
+                            :
+                            <ItemCount initial={1} stock={listProduct.stock} onAdd={onAdd}/>
+
+                        }
+
                     </Box> 
                 </Stack>
                 
