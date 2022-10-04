@@ -35,7 +35,7 @@ const Navbar = () => {
                     <Text px={linkPadding}>Infantiles y Juveniles</Text>
                 </NavLink>
                 <Box px={linkPadding}>
-                    <Link><CartWidget/></Link> 
+                    <CartWidget/>
                 </Box>
             </HStack>
         </HStack>

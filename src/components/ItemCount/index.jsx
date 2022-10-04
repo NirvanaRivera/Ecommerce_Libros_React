@@ -21,7 +21,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
                         </HStack>
                     </Center>
                     <Box py={6}>
-                        <Button colorScheme='orange' size='sm' onClick={onAdd}>Agregar al carrito</Button>
+                        <Button colorScheme='orange' size='sm' onClick={() => onAdd(count)}>Agregar al carrito</Button>
                     </Box>
                 </Box>
             </Stack>

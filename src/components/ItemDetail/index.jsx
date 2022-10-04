@@ -2,13 +2,17 @@ import { Stack, Text, Image, Box, Button} from "@chakra-ui/react";
 import { useState } from "react";
 import ItemCount from "../ItemCount";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
-const ItemDetail = ({listProduct}) => {
+const ItemDetail = ({ listProduct }) => {
 
     const [isAdded, setIsAdded] = useState(false)
 
-    const onAdd = () => {
-        setIsAdded(true)
+    const { addToCart } = useCartContext ()
+
+    const onAdd = (quantity) => {
+        addToCart(listProduct, quantity);
+        setIsAdded(true);
     }
 
     return (
@@ -22,7 +26,7 @@ const ItemDetail = ({listProduct}) => {
                         {
                             isAdded ?
                             <NavLink to="/cart">
-                                <Button olorScheme='orange' size='sm'> Ir al Carrito </Button>
+                                <Button colorScheme='orange' size='sm'> Ir al Carrito </Button>
                             </NavLink>
                             :
                             <ItemCount initial={1} stock={listProduct.stock} onAdd={onAdd}/>
