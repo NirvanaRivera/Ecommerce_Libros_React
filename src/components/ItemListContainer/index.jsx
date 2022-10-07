@@ -1,32 +1,46 @@
 import { useState, useEffect } from 'react';
 import { Center, Heading, Spinner } from '@chakra-ui/react';
 import{ ItemList } from '../ItemList'
-import { products } from '../../utils/products';
-import { customFetch } from '../../utils/customFetch';
 import { useParams } from 'react-router-dom';
+import { db } from '../../firebase/firebase'
+import { getDocs, collection, query, where } from 'firebase/firestore';
+
 
 
 const ItemListContainer = ({greeting}) => {
 
     const [listProduct, setListProduct] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const { category } = useParams();
 
     useEffect(() => {
-        setLoading(true);
-        customFetch(products)
-            .then (res => {
-                if (category) {
-                    setLoading(false);
-                    setListProduct(res.filter(prod => prod.category === category)); 
-                } else {
-                    setLoading(false);
-                    setListProduct(res);
-                };
+
+        
+        const productsCollection = collection(db, 'products');
+
+        getDocs(category 
+            ? query(productsCollection, where('category', '==', category)) 
+            : productsCollection)
+        .then((data) => {
+            const listProduct = data.docs.map((product) => {
+                return {
+                    ...product.data(), id: product.id
+                } 
             })
 
+            setLoading(false);
+            setListProduct(listProduct);
+        }).catch((e)=>{
+            setError(true)
+        } ); 
+
     }, [category]);
+
+    if (error) {
+        return <div>Hay un error! :C</div>;
+    }
 
     return (
         <>
@@ -41,6 +55,8 @@ const ItemListContainer = ({greeting}) => {
                 <Spinner color='orange.500' emptyColor='gray.200' size='xl' speed='0.65s' />
             </Center>
             }
+
+
         </>
         
     );

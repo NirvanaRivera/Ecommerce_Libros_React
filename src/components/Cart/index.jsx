@@ -19,7 +19,7 @@ const Cart = () => {
                         <Button colorScheme='orange' size='sm' onClick={() => removeProduct(prod.id)}>X</Button>
                     </HStack>
                 )}
-                {cartList.length === 0 ?
+                {!cartList.length ?
                     <Text> El carrito está vacío</Text>
                     :
                     <>

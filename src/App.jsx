@@ -8,10 +8,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartContextProvider } from './context/CartContext';
 
 function App() {
-  return (   
+  return (
     <ChakraProvider>
       <CartContextProvider>
-        <BrowserRouter>      
+        <BrowserRouter>
           <Navbar/>
           <Routes>
             <Route path='/' element={<ItemListContainer greeting="Usuario"/>}/>
@@ -19,11 +19,9 @@ function App() {
             <Route path='/product/:id' element={< ItemDetailContainer />} />
             <Route path='/cart' element={ <Cart/> } />
           </Routes>
-
         </BrowserRouter>
       </CartContextProvider>
     </ChakraProvider>
-    
   );
 }
 
