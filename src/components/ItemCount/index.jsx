@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { HStack, Button, Text, Stack, Box, Heading, Center } from '@chakra-ui/react';
 
 const ItemCount = ({ initial, stock, onAdd }) => {
