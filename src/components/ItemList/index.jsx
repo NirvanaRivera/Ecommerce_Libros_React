@@ -1,11 +1,13 @@
 import { Item } from '../Item'
-import { HStack } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 
 const ItemList = ({listProduct}) => {
     return (
-        <HStack> 
-        {listProduct.map(product => <Item key={product.id} product={product}/>)}
-        </HStack>
+        <div>
+            <Grid templateColumns='repeat(4, 1fr)' justifyItems='center' spacing='24px'> 
+            {listProduct.map(product => <Item key={product.id} product={product}/>)}
+            </Grid>
+        </div>
     );
 };
 

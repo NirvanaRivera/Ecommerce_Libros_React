@@ -7,7 +7,7 @@ import { useCartContext } from '../../context/CartContext';
 
 const CartWidget = () => {
 
-    const { totalQuantity } = useCartContext ()
+    const { totalQuantity } = useCartContext ();
 
     return (
         <NavLink to="/cart">

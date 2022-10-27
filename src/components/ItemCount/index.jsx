@@ -22,6 +22,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
                     </Center>
                     <Box py={6}>
                         <Button colorScheme='orange' size='sm' onClick={() => onAdd(count)}>Agregar al carrito</Button>
+                        <Center pt='8'>Stock: {stock}</Center>
                     </Box>
                 </Box>
             </Stack>

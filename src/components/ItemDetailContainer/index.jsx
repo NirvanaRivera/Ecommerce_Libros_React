@@ -12,6 +12,7 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true);
     const [product, setProduct] = useState({});
     const [error, setError] = useState(false);
+    const [error404, setError404] = useState(false);
 
 
 
@@ -22,20 +23,27 @@ const ItemDetailContainer = () => {
         const refDoc = doc(productsCollection, id);
         getDoc(refDoc)
         .then((result)=>{
+            if (result.data() === undefined) {
+                setError404(true);
+            }
             setProduct({
                 id:result.id,
                 ...result.data()
             });
         })
         .catch((e)=>{
-            setError(true)
+            setError(true);
         })
         .finally(()=>{
-            setLoading(false)
+            setLoading(false);
         })
         ;
 
     }, [id]);
+
+    if (error404) {
+        return <Center m='60px' fontSize='40px'>El producto {id} no existe.</Center>;
+    }
 
     if (error) {
         return <div>Hay un error! :C</div>;

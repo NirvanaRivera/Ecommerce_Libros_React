@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Center, Heading, Spinner } from '@chakra-ui/react';
-import{ ItemList } from '../ItemList'
+import{ ItemList } from '../ItemList';
 import { useParams } from 'react-router-dom';
-import { db } from '../../firebase/firebase'
+import { db } from '../../firebase/firebase';
 import { getDocs, collection, query, where } from 'firebase/firestore';
-
 
 
 const ItemListContainer = ({greeting}) => {
@@ -16,7 +15,6 @@ const ItemListContainer = ({greeting}) => {
     const { category } = useParams();
 
     useEffect(() => {
-
         
         const productsCollection = collection(db, 'products');
 
@@ -27,13 +25,13 @@ const ItemListContainer = ({greeting}) => {
             const listProduct = data.docs.map((product) => {
                 return {
                     ...product.data(), id: product.id
-                } 
+                };
             })
 
             setLoading(false);
             setListProduct(listProduct);
         }).catch((e)=>{
-            setError(true)
+            setError(true);
         } ); 
 
     }, [category]);
@@ -45,7 +43,7 @@ const ItemListContainer = ({greeting}) => {
     return (
         <>
             <Heading>
-                <Center as='ins'>Hola {greeting} ! Bienvenido {'<3'} </Center>
+                <Center m='60px' fontSize='40px'>Hola {greeting} ! Bienvenido {'<3'} </Center>
             </Heading>
             {!loading
             ?
