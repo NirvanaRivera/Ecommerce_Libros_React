@@ -37,6 +37,8 @@ const CompraForm = ({setUserData, finalizarCompra}) => {
             setFormError("Los Emails no coinciden, intente nuevamente");
         } else if (email === '' || nombreCompleto === '') {
             setFormError("Falta rellenar algún campo.");
+        } else if (!email.includes('@')){
+            setFormError("No ha ingresado un email, ingrese un email por favor.")
         } else {
             setFormError(null);
             setUserData({nombreCompleto, email, pagos});
